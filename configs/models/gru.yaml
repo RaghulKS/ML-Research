@@ -1,0 +1,10 @@
+model_type: gru
+d_model: 48
+hidden_size: 48
+n_layers: 1
+dropout: 0.2
+max_len: 32
+lr: 0.001
+epochs: 4
+batch_size: 32
+patience: 3

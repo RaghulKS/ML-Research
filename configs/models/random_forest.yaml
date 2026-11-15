@@ -1,0 +1,5 @@
+family: random_forest
+max_depth_grid: [4, 6]
+n_estimators: 200
+min_samples_leaf: 3
+class_weight: balanced_subsample

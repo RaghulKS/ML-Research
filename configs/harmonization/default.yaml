@@ -1,0 +1,117 @@
+# Explicit code and unit crosswalk.
+# MIMIC itemids below are commonly used chart/lab identifiers. Confirm them
+# against the local d_labitems or d_items dictionary before a clinical run.
+# A shared display name is not mapped unless it is listed here.
+
+code_map:
+  "50912": "CREAT"
+  "CREAT": "CREAT"
+  "CREATININE": "CREAT"
+  "2160-0": "CREAT"
+  "50983": "SODIUM"
+  "SODIUM": "SODIUM"
+  "2951-2": "SODIUM"
+  "50971": "POTASSIUM"
+  "POTASSIUM": "POTASSIUM"
+  "K": "POTASSIUM"
+  "2823-3": "POTASSIUM"
+  "51222": "HGB"
+  "HGB": "HGB"
+  "HEMOGLOBIN": "HGB"
+  "718-7": "HGB"
+  "BNP": "BNP"
+  "42637-9": "BNP"
+  "220179": "SBP"
+  "220050": "SBP"
+  "SBP": "SBP"
+  "SYSTOLIC": "SBP"
+  "220180": "DBP"
+  "DBP": "DBP"
+  "DIASTOLIC": "DBP"
+  "220045": "HR"
+  "HR": "HR"
+  "HEARTRATE": "HR"
+  "FUROSEMIDE": "MED:LOOP_DIURETIC"
+  "LASIX": "MED:LOOP_DIURETIC"
+  "BUMETANIDE": "MED:LOOP_DIURETIC"
+  "LISINOPRIL": "MED:ACEI"
+  "ENALAPRIL": "MED:ACEI"
+  "LOSARTAN": "MED:ARB"
+  "VALSARTAN": "MED:ARB"
+  "METOPROLOL": "MED:BETA_BLOCKER"
+  "CARVEDILOL": "MED:BETA_BLOCKER"
+  "BISOPROLOL": "MED:BETA_BLOCKER"
+  "APIXABAN": "MED:ANTICOAGULANT"
+  "WARFARIN": "MED:ANTICOAGULANT"
+  "HEPARIN": "MED:ANTICOAGULANT"
+  "ATORVASTATIN": "MED:STATIN"
+  "ROSUVASTATIN": "MED:STATIN"
+  "88.72": "PROC:ECHO"
+  "8872": "PROC:ECHO"
+  "ECHO": "PROC:ECHO"
+  "B244ZZZ": "PROC:ECHO"
+
+unit_if_missing:
+  "50912": "mg/dL"
+  "CREAT": "mg/dL"
+  "50983": "mmol/L"
+  "SODIUM": "mmol/L"
+  "50971": "mmol/L"
+  "POTASSIUM": "mmol/L"
+  "51222": "g/dL"
+  "HGB": "g/dL"
+  "BNP": "pg/mL"
+  "220179": "mmHg"
+  "220180": "mmHg"
+  "220045": "bpm"
+  "SBP": "mmHg"
+  "DBP": "mmHg"
+  "HR": "bpm"
+
+canonical_unit:
+  CREAT: "mg/dL"
+  SODIUM: "mmol/L"
+  POTASSIUM: "mmol/L"
+  HGB: "g/dL"
+  BNP: "pg/mL"
+  SBP: "mmHg"
+  DBP: "mmHg"
+  HR: "bpm"
+
+# Multiply a source value by this factor to land in the canonical unit.
+# Creatinine: 1 mg/dL = 88.4 umol/L.
+to_canonical_multiplier:
+  CREAT:
+    "mg/dL": 1.0
+    "umol/L": 0.011312217194570135
+  SODIUM:
+    "mmol/L": 1.0
+    "meq/L": 1.0
+  POTASSIUM:
+    "mmol/L": 1.0
+    "meq/L": 1.0
+  HGB:
+    "g/dL": 1.0
+    "g/L": 0.1
+  BNP:
+    "pg/mL": 1.0
+    "ng/L": 1.0
+  SBP:
+    "mmHg": 1.0
+  DBP:
+    "mmHg": 1.0
+  HR:
+    "bpm": 1.0
+    "beats/min": 1.0
+
+# Applied after unit conversion. Values outside the range become missing.
+# These are data-quality bounds, not clinical reference ranges.
+plausible_range:
+  CREAT: [0.1, 30.0]
+  SODIUM: [100.0, 180.0]
+  POTASSIUM: [1.5, 8.0]
+  HGB: [3.0, 22.0]
+  BNP: [0.0, 100000.0]
+  SBP: [40.0, 280.0]
+  DBP: [20.0, 180.0]
+  HR: [20.0, 250.0]

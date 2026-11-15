@@ -1,0 +1,360 @@
+{
+  "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+  "task": {
+    "task": "hf_30day_all_cause_readmission",
+    "implementation": "readmission_v1",
+    "cohort_version": "heart_failure_historical_v1",
+    "horizon_days": 30.0,
+    "n_cohort_patients": 145,
+    "n_labeled": 124,
+    "n_positive": 54,
+    "n_negative": 70,
+    "n_censored_insufficient_followup": 21,
+    "n_excluded_no_history": 0,
+    "positive_definition": "New encounter with start strictly after the index anchor and at most 30.0 days later. Any diagnosis counts. This is not a repeat of the cohort-defining code.",
+    "negative_definition": "No new encounter in the horizon, and observation continues through the horizon.",
+    "censor_definition": "Observation ends before the horizon without a qualifying encounter.",
+    "anchor_definition": "Anchor is the index encounter end: discharge time when an admission table provides it, otherwise the last in-encounter event time."
+  },
+  "source_heldout": {
+    "n": 25,
+    "n_positive": 11,
+    "auroc": 0.474025974025974,
+    "auprc": 0.49954175081884056,
+    "brier": 0.24865308449422396,
+    "calibration_bins": [
+      {
+        "bin_left": 0.0,
+        "bin_right": 0.2,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.2,
+        "bin_right": 0.4,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.4,
+        "bin_right": 0.6000000000000001,
+        "n": 25,
+        "mean_predicted": 0.5022068583965301,
+        "fraction_positive": 0.44
+      },
+      {
+        "bin_left": 0.6000000000000001,
+        "bin_right": 0.8,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.8,
+        "bin_right": 1.0,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      }
+    ],
+    "threshold": 0.5,
+    "precision": 0.4,
+    "recall": 0.5454545454545454,
+    "f1": 0.46153846153846156,
+    "sensitivity": 0.5454545454545454,
+    "specificity": 0.35714285714285715,
+    "confusion_matrix": [
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        6
+      ]
+    ]
+  },
+  "target_frozen": {
+    "n": 21,
+    "n_positive": 11,
+    "auroc": 0.39090909090909093,
+    "auprc": 0.466572309152523,
+    "brier": 0.25445542125524506,
+    "calibration_bins": [
+      {
+        "bin_left": 0.0,
+        "bin_right": 0.2,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.2,
+        "bin_right": 0.4,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.4,
+        "bin_right": 0.6000000000000001,
+        "n": 21,
+        "mean_predicted": 0.4949269039290292,
+        "fraction_positive": 0.5238095238095238
+      },
+      {
+        "bin_left": 0.6000000000000001,
+        "bin_right": 0.8,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.8,
+        "bin_right": 1.0,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      }
+    ],
+    "threshold": 0.5,
+    "precision": 0.375,
+    "recall": 0.2727272727272727,
+    "f1": 0.3157894736842105,
+    "sensitivity": 0.2727272727272727,
+    "specificity": 0.5,
+    "confusion_matrix": [
+      [
+        5,
+        5
+      ],
+      [
+        8,
+        3
+      ]
+    ]
+  },
+  "target_finetuned_full": {
+    "n": 21,
+    "n_positive": 11,
+    "auroc": 0.5363636363636364,
+    "auprc": 0.5506321515679804,
+    "brier": 0.2522750854401192,
+    "calibration_bins": [
+      {
+        "bin_left": 0.0,
+        "bin_right": 0.2,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.2,
+        "bin_right": 0.4,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.4,
+        "bin_right": 0.6000000000000001,
+        "n": 21,
+        "mean_predicted": 0.48292296699115206,
+        "fraction_positive": 0.5238095238095238
+      },
+      {
+        "bin_left": 0.6000000000000001,
+        "bin_right": 0.8,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.8,
+        "bin_right": 1.0,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      }
+    ],
+    "threshold": 0.5,
+    "precision": 0.4,
+    "recall": 0.18181818181818182,
+    "f1": 0.25,
+    "sensitivity": 0.18181818181818182,
+    "specificity": 0.7,
+    "confusion_matrix": [
+      [
+        7,
+        3
+      ],
+      [
+        9,
+        2
+      ]
+    ]
+  },
+  "target_finetuned_head_only": {
+    "n": 21,
+    "n_positive": 11,
+    "auroc": 0.4,
+    "auprc": 0.4706127131929271,
+    "brier": 0.25352106025898563,
+    "calibration_bins": [
+      {
+        "bin_left": 0.0,
+        "bin_right": 0.2,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.2,
+        "bin_right": 0.4,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.4,
+        "bin_right": 0.6000000000000001,
+        "n": 21,
+        "mean_predicted": 0.49769388635953266,
+        "fraction_positive": 0.5238095238095238
+      },
+      {
+        "bin_left": 0.6000000000000001,
+        "bin_right": 0.8,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.8,
+        "bin_right": 1.0,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      }
+    ],
+    "threshold": 0.5,
+    "precision": 0.4444444444444444,
+    "recall": 0.36363636363636365,
+    "f1": 0.4,
+    "sensitivity": 0.36363636363636365,
+    "specificity": 0.5,
+    "confusion_matrix": [
+      [
+        5,
+        5
+      ],
+      [
+        7,
+        4
+      ]
+    ]
+  },
+  "target_from_scratch": {
+    "n": 21,
+    "n_positive": 11,
+    "auroc": 0.8545454545454546,
+    "auprc": 0.8207056832056833,
+    "brier": 0.22677374315036522,
+    "calibration_bins": [
+      {
+        "bin_left": 0.0,
+        "bin_right": 0.2,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.2,
+        "bin_right": 0.4,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      },
+      {
+        "bin_left": 0.4,
+        "bin_right": 0.6000000000000001,
+        "n": 15,
+        "mean_predicted": 0.5411806305249532,
+        "fraction_positive": 0.4
+      },
+      {
+        "bin_left": 0.6000000000000001,
+        "bin_right": 0.8,
+        "n": 6,
+        "mean_predicted": 0.6187587281068166,
+        "fraction_positive": 0.8333333333333334
+      },
+      {
+        "bin_left": 0.8,
+        "bin_right": 1.0,
+        "n": 0,
+        "mean_predicted": null,
+        "fraction_positive": null
+      }
+    ],
+    "threshold": 0.5,
+    "precision": 0.5238095238095238,
+    "recall": 1.0,
+    "f1": 0.6875,
+    "sensitivity": 1.0,
+    "specificity": 0.0,
+    "confusion_matrix": [
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        11
+      ]
+    ]
+  },
+  "unk_rate_target_test_under_source_vocab": 0.006507592190889371,
+  "source_train_seconds": 0.10440844100003233,
+  "finetune_full_seconds": 0.08637298799976634,
+  "finetune_head_seconds": 0.05646095000020068,
+  "scratch_seconds": 0.08427601700032028,
+  "n_parameters": 16757,
+  "compatible_task": true,
+  "harmonization": {
+    "source": {
+      "n_codes_mapped": 2720,
+      "n_units_imputed_from_dictionary": 0,
+      "n_units_converted": 0,
+      "n_unit_unconverted": 1,
+      "n_invalid_values": 1
+    },
+    "target": {
+      "n_codes_mapped": 256,
+      "n_units_imputed_from_dictionary": 0,
+      "n_units_converted": 506,
+      "n_unit_unconverted": 1,
+      "n_invalid_values": 1
+    }
+  },
+  "caveat": "Cross-domain numbers require the same outcome definition and comparable ascertainment. These synthetic domains satisfy that by construction. Real MIMIC-IV versus CRDW comparisons do not until that is demonstrated. Differences are observational associations, not treatment effects.",
+  "note": "SYNTHETIC ENGINEERING VALIDATION. These numbers check that the pipeline runs. They are not clinical performance and they are not estimates for MIMIC-IV or CRDW patients.",
+  "created_at_utc": "2026-11-15T02:16:08Z",
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-6.12.113+-x86_64-with-glibc2.39",
+    "package_version": "0.1.0",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.1.1",
+      "scikit-learn": "1.9.1",
+      "xgboost": "3.4.1",
+      "torch": "2.15.0+cpu",
+      "pyarrow": "26.0.1",
+      "PyYAML": "6.0.1",
+      "joblib": "1.6.0"
+    }
+  }
+}

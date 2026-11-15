@@ -1,0 +1,177 @@
+{
+  "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+  "source": "crdw",
+  "files_loaded": [
+    "diagnoses.csv",
+    "medications.csv",
+    "labs.csv",
+    "vitals.csv",
+    "procedures.csv",
+    "patients.csv"
+  ],
+  "cleaning": {
+    "n_input": 3303,
+    "dropped_missing_patient_id": 13,
+    "dropped_nonfinite_event_time": 1,
+    "dropped_duplicate_rows": 13,
+    "assigned_missing_encounter_id": 0,
+    "n_output": 3276,
+    "n_patients": 150,
+    "n_encounters": 492
+  },
+  "warnings": [],
+  "quality": {
+    "n_rows": 3276,
+    "n_patients": 150,
+    "n_encounters": 492,
+    "duplicate_rate": 0.0,
+    "missingness": {
+      "patient_id": 0.0,
+      "encounter_id": 0.0,
+      "event_time": 0.0,
+      "event_code": 0.0,
+      "event_value": 0.3733211233211233,
+      "event_unit": 0.3733211233211233
+    },
+    "event_type_counts": {
+      "vital": 1121,
+      "diagnosis": 957,
+      "lab": 932,
+      "medication_order": 216,
+      "procedure": 50
+    },
+    "time_origin_counts": {
+      "relative_days": 3276
+    },
+    "patients_with_mixed_time_origins": 0,
+    "event_time_min": 0.0,
+    "event_time_max": 263.0,
+    "sequence_length": {
+      "mean": 21.84,
+      "median": 22.0,
+      "p90": 29.0,
+      "max": 32,
+      "min": 11
+    },
+    "top_diagnosis_codes": {
+      "I10": 383,
+      "4019": 75,
+      "J189": 55,
+      "Z09": 54,
+      "25000": 38,
+      "E119": 38,
+      "4280": 30,
+      "I509": 27,
+      "N183": 25,
+      "4281": 24,
+      "4289": 22,
+      "I5032": 21,
+      "42821": 20,
+      "I4891": 19,
+      "I5022": 19
+    },
+    "coverage": {
+      "patients_with_diagnosis": 1.0,
+      "patients_with_medication_order": 0.8466666666666667,
+      "patients_with_medication_admin": 0.0,
+      "patients_with_lab": 1.0,
+      "patients_with_vital": 1.0,
+      "patients_with_procedure": 0.3333333333333333
+    },
+    "diagnosis_system_form_mismatches": 0,
+    "n_patients_table": 150
+  },
+  "coding_overlap": {
+    "interpretation": "Same-encounter ICD-9 and ICD-10 matches can be dual entry or a crosswalk, not two separate diseases. Run this on a real extract before interpreting overlap.",
+    "conditions": {
+      "heart_failure": {
+        "encounters_with_condition": 121,
+        "encounters_with_both_systems": 60,
+        "both_system_fraction": 0.49586776859504134
+      },
+      "stroke": {
+        "encounters_with_condition": 13,
+        "encounters_with_both_systems": 6,
+        "both_system_fraction": 0.46153846153846156
+      },
+      "myocardial_infarction": {
+        "encounters_with_condition": 11,
+        "encounters_with_both_systems": 5,
+        "both_system_fraction": 0.45454545454545453
+      }
+    }
+  },
+  "harmonization": {
+    "n_codes_mapped": 256,
+    "n_units_imputed_from_dictionary": 0,
+    "n_units_converted": 506,
+    "n_unit_unconverted": 1,
+    "n_invalid_values": 1
+  },
+  "cohort_summaries": {
+    "heart_failure_historical_v1": {
+      "cohort_version": "heart_failure_historical_v1",
+      "condition": "heart_failure",
+      "phenotype": "historical",
+      "description": "Historical heart-failure list: ICD-10 prefix I50 and ICD-9 prefix 428. This is the definition behind the previously reported counts.",
+      "n_patients": 121,
+      "n_encounters": 121,
+      "n_diagnosis_rows": 181
+    },
+    "heart_failure_expanded_v1": {
+      "cohort_version": "heart_failure_expanded_v1",
+      "condition": "heart_failure",
+      "phenotype": "expanded",
+      "description": "Broader heart-failure research phenotype. Includes the historical I50/428 family plus selected hypertensive and rheumatic heart-failure codes. Not a replacement for historical counts.",
+      "n_patients": 130,
+      "n_encounters": 130,
+      "n_diagnosis_rows": 195
+    },
+    "stroke_historical_v1": {
+      "cohort_version": "stroke_historical_v1",
+      "condition": "stroke",
+      "phenotype": "historical",
+      "description": "Historical stroke list: ICD-10 prefix I63 and ICD-9 prefix 434.",
+      "n_patients": 13,
+      "n_encounters": 13,
+      "n_diagnosis_rows": 19
+    },
+    "stroke_expanded_v1": {
+      "cohort_version": "stroke_expanded_v1",
+      "condition": "stroke",
+      "phenotype": "expanded",
+      "description": "Broader stroke research phenotype including hemorrhagic and unspecified stroke. Not a replacement for historical counts.",
+      "n_patients": 21,
+      "n_encounters": 21,
+      "n_diagnosis_rows": 31
+    },
+    "mi_historical_v1": {
+      "cohort_version": "mi_historical_v1",
+      "condition": "myocardial_infarction",
+      "phenotype": "historical",
+      "description": "Historical myocardial-infarction list: exact ICD-10 I21.9 and ICD-9 prefix 410.9. This is intentionally narrow.",
+      "n_patients": 11,
+      "n_encounters": 11,
+      "n_diagnosis_rows": 16
+    },
+    "mi_expanded_v1": {
+      "cohort_version": "mi_expanded_v1",
+      "condition": "myocardial_infarction",
+      "phenotype": "expanded",
+      "description": "Broader myocardial-infarction research phenotype: ICD-10 I21*/I22* and ICD-9 410*. Not a replacement for historical counts.",
+      "n_patients": 18,
+      "n_encounters": 18,
+      "n_diagnosis_rows": 27
+    }
+  },
+  "provenance": {
+    "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+    "generator": "clinical_ml.data.synthetic",
+    "generator_version": "synthetic_hospitals_v1",
+    "domain": "crdw",
+    "n_patients": 150,
+    "seed": 7,
+    "not_clinical_data": true,
+    "note": "Latent risk influences creatinine, comorbidity burden, diuretic orders, and the readmission label. Discrimination on this extract is an engineering check, not a clinical result."
+  }
+}

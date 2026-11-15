@@ -1,0 +1,37 @@
+task:
+  name: hf_30day_all_cause_readmission
+  implementation: readmission_v1
+  cohort: heart_failure
+  phenotype: historical
+  horizon_days: 30
+  index_rule: first_qualifying_encounter
+  anchor: encounter_end
+  positive: new_encounter_start_within_horizon
+  negative: no_new_encounter_and_followup_through_horizon
+  censored: followup_ends_before_horizon_without_event
+split:
+  test_size: 0.2
+  val_size: 0.2
+  seed: 7
+models:
+  logistic_regression:
+    C_grid: [0.1, 1.0, 3.0]
+    max_iter: 1000
+  random_forest:
+    max_depth_grid: [4, 6]
+    n_estimators: 200
+    min_samples_leaf: 3
+  xgboost:
+    max_depth_grid: [2, 3]
+    n_estimators: 80
+    learning_rate: 0.08
+    subsample: 0.9
+    colsample_bytree: 0.9
+bootstrap:
+  n_boot: 200
+permutation:
+  n_repeats: 5
+synthetic:
+  n_mimic: 180
+  n_crdw: 150
+  seed: 7

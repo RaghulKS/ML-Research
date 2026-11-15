@@ -1,0 +1,711 @@
+{
+  "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+  "task": {
+    "task": "hf_30day_all_cause_readmission",
+    "implementation": "readmission_v1",
+    "cohort_version": "heart_failure_historical_v1",
+    "horizon_days": 30.0,
+    "n_cohort_patients": 145,
+    "n_labeled": 124,
+    "n_positive": 54,
+    "n_negative": 70,
+    "n_censored_insufficient_followup": 21,
+    "n_excluded_no_history": 0,
+    "positive_definition": "New encounter with start strictly after the index anchor and at most 30.0 days later. Any diagnosis counts. This is not a repeat of the cohort-defining code.",
+    "negative_definition": "No new encounter in the horizon, and observation continues through the horizon.",
+    "censor_definition": "Observation ends before the horizon without a qualifying encounter.",
+    "anchor_definition": "Anchor is the index encounter end: discharge time when an admission table provides it, otherwise the last in-encounter event time."
+  },
+  "split_info": {
+    "warning": null,
+    "seed": 7,
+    "test_size": 0.2,
+    "val_size": 0.2
+  },
+  "split_sizes": {
+    "train": 74,
+    "validation": 25,
+    "test": 25
+  },
+  "n_features": 57,
+  "dropped_all_nan_columns": [],
+  "leakage_screen": [],
+  "models": [
+    {
+      "model": "logistic_regression",
+      "requested_family": "logistic_regression",
+      "fallback": null,
+      "hyperparameters": {
+        "C": 0.1,
+        "max_iter": 1000
+      },
+      "validation_metrics_for_selection": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.6233766233766234,
+        "auprc": 0.6396846236767185,
+        "brier": 0.2496773427439055,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 3,
+            "mean_predicted": 0.14984834391623156,
+            "fraction_positive": 0.6666666666666666
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 6,
+            "mean_predicted": 0.28689239679550554,
+            "fraction_positive": 0.16666666666666666
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 7,
+            "mean_predicted": 0.4753751157755768,
+            "fraction_positive": 0.2857142857142857
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 6,
+            "mean_predicted": 0.6616044427110095,
+            "fraction_positive": 0.6666666666666666
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 3,
+            "mean_predicted": 0.8963074329244426,
+            "fraction_positive": 0.6666666666666666
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 0.6363636363636364,
+        "recall": 0.6363636363636364,
+        "f1": 0.6363636363636364,
+        "sensitivity": 0.6363636363636364,
+        "specificity": 0.7142857142857143,
+        "confusion_matrix": [
+          [
+            10,
+            4
+          ],
+          [
+            4,
+            7
+          ]
+        ]
+      },
+      "test_metrics": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.577922077922078,
+        "auprc": 0.5761275088547816,
+        "brier": 0.26372358431007703,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 5,
+            "mean_predicted": 0.16945884910642423,
+            "fraction_positive": 0.4
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 4,
+            "mean_predicted": 0.2672385923903126,
+            "fraction_positive": 0.25
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 7,
+            "mean_predicted": 0.491347026409349,
+            "fraction_positive": 0.5714285714285714
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 8,
+            "mean_predicted": 0.7085490958268286,
+            "fraction_positive": 0.375
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 1,
+            "mean_predicted": 0.8409354176012107,
+            "fraction_positive": 1.0
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 0.5,
+        "recall": 0.5454545454545454,
+        "f1": 0.5217391304347826,
+        "sensitivity": 0.5454545454545454,
+        "specificity": 0.5714285714285714,
+        "confusion_matrix": [
+          [
+            8,
+            6
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      },
+      "test_metrics_at_validation_f1_threshold": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.577922077922078,
+        "auprc": 0.5761275088547816,
+        "brier": 0.26372358431007703,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 5,
+            "mean_predicted": 0.16945884910642423,
+            "fraction_positive": 0.4
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 4,
+            "mean_predicted": 0.2672385923903126,
+            "fraction_positive": 0.25
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 7,
+            "mean_predicted": 0.491347026409349,
+            "fraction_positive": 0.5714285714285714
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 8,
+            "mean_predicted": 0.7085490958268286,
+            "fraction_positive": 0.375
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 1,
+            "mean_predicted": 0.8409354176012107,
+            "fraction_positive": 1.0
+          }
+        ],
+        "threshold": 0.49999999999999994,
+        "precision": 0.5,
+        "recall": 0.5454545454545454,
+        "f1": 0.5217391304347826,
+        "sensitivity": 0.5454545454545454,
+        "specificity": 0.5714285714285714,
+        "confusion_matrix": [
+          [
+            8,
+            6
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      },
+      "bootstrap_ci": {
+        "auroc": {
+          "metric": "auroc",
+          "low": 0.34615384615384615,
+          "high": 0.7922743922743923,
+          "n_used": 200,
+          "n_boot": 200
+        },
+        "auprc": {
+          "metric": "auprc",
+          "low": 0.2943593533372945,
+          "high": 0.8372937426945525,
+          "n_used": 200,
+          "n_boot": 200
+        }
+      },
+      "calibration": {
+        "method": "isotonic_regression",
+        "fit": true,
+        "fit_split": "validation",
+        "brier_raw": 0.26372358431007703,
+        "brier_calibrated": 0.24171100601445775,
+        "auroc_calibrated": 0.5649350649350648,
+        "auprc_calibrated": 0.4782001836547291,
+        "note": "Calibration was not used to choose the classifier."
+      },
+      "train_seconds": 0.9629938530001709,
+      "model_path": "artifacts/experiments/synthetic_smoke/baselines_mimic/models/logistic_regression.joblib",
+      "reload_max_abs_diff": 0.0
+    },
+    {
+      "model": "random_forest",
+      "requested_family": "random_forest",
+      "fallback": null,
+      "hyperparameters": {
+        "max_depth": 4,
+        "n_estimators": 200,
+        "min_samples_leaf": 3
+      },
+      "validation_metrics_for_selection": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.6168831168831168,
+        "auprc": 0.5455196764020294,
+        "brier": 0.23648497152519612,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 13,
+            "mean_predicted": 0.32281212070067294,
+            "fraction_positive": 0.38461538461538464
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 11,
+            "mean_predicted": 0.5126606800756125,
+            "fraction_positive": 0.5454545454545454
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 1,
+            "mean_predicted": 0.6364506185390875,
+            "fraction_positive": 0.0
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 0.5714285714285714,
+        "recall": 0.36363636363636365,
+        "f1": 0.4444444444444444,
+        "sensitivity": 0.36363636363636365,
+        "specificity": 0.7857142857142857,
+        "confusion_matrix": [
+          [
+            11,
+            3
+          ],
+          [
+            7,
+            4
+          ]
+        ]
+      },
+      "test_metrics": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.5194805194805194,
+        "auprc": 0.5856524259279433,
+        "brier": 0.25828011842343435,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 8,
+            "mean_predicted": 0.3375267747429974,
+            "fraction_positive": 0.5
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 12,
+            "mean_predicted": 0.4981838600163327,
+            "fraction_positive": 0.3333333333333333
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 5,
+            "mean_predicted": 0.6351943750007425,
+            "fraction_positive": 0.6
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 0.5,
+        "recall": 0.45454545454545453,
+        "f1": 0.47619047619047616,
+        "sensitivity": 0.45454545454545453,
+        "specificity": 0.6428571428571429,
+        "confusion_matrix": [
+          [
+            9,
+            5
+          ],
+          [
+            6,
+            5
+          ]
+        ]
+      },
+      "test_metrics_at_validation_f1_threshold": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.5194805194805194,
+        "auprc": 0.5856524259279433,
+        "brier": 0.25828011842343435,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 8,
+            "mean_predicted": 0.3375267747429974,
+            "fraction_positive": 0.5
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 12,
+            "mean_predicted": 0.4981838600163327,
+            "fraction_positive": 0.3333333333333333
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 5,
+            "mean_predicted": 0.6351943750007425,
+            "fraction_positive": 0.6
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          }
+        ],
+        "threshold": 0.25,
+        "precision": 0.44,
+        "recall": 1.0,
+        "f1": 0.6111111111111112,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "confusion_matrix": [
+          [
+            0,
+            14
+          ],
+          [
+            0,
+            11
+          ]
+        ]
+      },
+      "bootstrap_ci": {
+        "auroc": {
+          "metric": "auroc",
+          "low": 0.26266869095816464,
+          "high": 0.7692708333333333,
+          "n_used": 200,
+          "n_boot": 200
+        },
+        "auprc": {
+          "metric": "auprc",
+          "low": 0.30712787665233315,
+          "high": 0.8140263172462662,
+          "n_used": 200,
+          "n_boot": 200
+        }
+      },
+      "calibration": {
+        "method": "isotonic_regression",
+        "fit": true,
+        "fit_split": "validation",
+        "brier_raw": 0.25828011842343435,
+        "brier_calibrated": 0.263918895637266,
+        "auroc_calibrated": 0.5227272727272727,
+        "auprc_calibrated": 0.4710537047493569,
+        "note": "Calibration was not used to choose the classifier."
+      },
+      "train_seconds": 7.928787665000073,
+      "model_path": "artifacts/experiments/synthetic_smoke/baselines_mimic/models/random_forest.joblib",
+      "reload_max_abs_diff": 1.1102230246251565e-16
+    },
+    {
+      "model": "xgboost",
+      "requested_family": "xgboost",
+      "fallback": null,
+      "hyperparameters": {
+        "max_depth": 3,
+        "n_estimators": 80,
+        "learning_rate": 0.08,
+        "subsample": 0.9,
+        "colsample_bytree": 0.9
+      },
+      "validation_metrics_for_selection": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.6818181818181819,
+        "auprc": 0.6618956753913129,
+        "brier": 0.2602093938315258,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 8,
+            "mean_predicted": 0.07337826583534479,
+            "fraction_positive": 0.25
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 6,
+            "mean_predicted": 0.29263996581236523,
+            "fraction_positive": 0.5
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 3,
+            "mean_predicted": 0.5007860759894053,
+            "fraction_positive": 0.3333333333333333
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 5,
+            "mean_predicted": 0.7107703208923339,
+            "fraction_positive": 0.6
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 3,
+            "mean_predicted": 0.8734865188598633,
+            "fraction_positive": 0.6666666666666666
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 0.5,
+        "recall": 0.45454545454545453,
+        "f1": 0.47619047619047616,
+        "sensitivity": 0.45454545454545453,
+        "specificity": 0.6428571428571429,
+        "confusion_matrix": [
+          [
+            9,
+            5
+          ],
+          [
+            6,
+            5
+          ]
+        ]
+      },
+      "test_metrics": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.512987012987013,
+        "auprc": 0.5450978156540817,
+        "brier": 0.33120202040058394,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 3,
+            "mean_predicted": 0.08239621420701344,
+            "fraction_positive": 0.6666666666666666
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 6,
+            "mean_predicted": 0.29366257041692734,
+            "fraction_positive": 0.3333333333333333
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 4,
+            "mean_predicted": 0.5054513514041901,
+            "fraction_positive": 0.5
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 7,
+            "mean_predicted": 0.7197312712669373,
+            "fraction_positive": 0.2857142857142857
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 5,
+            "mean_predicted": 0.855177366733551,
+            "fraction_positive": 0.6
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 0.42857142857142855,
+        "recall": 0.5454545454545454,
+        "f1": 0.48,
+        "sensitivity": 0.5454545454545454,
+        "specificity": 0.42857142857142855,
+        "confusion_matrix": [
+          [
+            6,
+            8
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      },
+      "test_metrics_at_validation_f1_threshold": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.512987012987013,
+        "auprc": 0.5450978156540817,
+        "brier": 0.33120202040058394,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 3,
+            "mean_predicted": 0.08239621420701344,
+            "fraction_positive": 0.6666666666666666
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 6,
+            "mean_predicted": 0.29366257041692734,
+            "fraction_positive": 0.3333333333333333
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 4,
+            "mean_predicted": 0.5054513514041901,
+            "fraction_positive": 0.5
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 7,
+            "mean_predicted": 0.7197312712669373,
+            "fraction_positive": 0.2857142857142857
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 5,
+            "mean_predicted": 0.855177366733551,
+            "fraction_positive": 0.6
+          }
+        ],
+        "threshold": 0.05,
+        "precision": 0.44,
+        "recall": 1.0,
+        "f1": 0.6111111111111112,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "confusion_matrix": [
+          [
+            0,
+            14
+          ],
+          [
+            0,
+            11
+          ]
+        ]
+      },
+      "bootstrap_ci": {
+        "auroc": {
+          "metric": "auroc",
+          "low": 0.2450826585695007,
+          "high": 0.7340972222222224,
+          "n_used": 200,
+          "n_boot": 200
+        },
+        "auprc": {
+          "metric": "auprc",
+          "low": 0.3003964120370371,
+          "high": 0.7652496327372376,
+          "n_used": 200,
+          "n_boot": 200
+        }
+      },
+      "calibration": {
+        "method": "isotonic_regression",
+        "fit": true,
+        "fit_split": "validation",
+        "brier_raw": 0.33120202040058394,
+        "brier_calibrated": 0.25055641149511837,
+        "auroc_calibrated": 0.5097402597402598,
+        "auprc_calibrated": 0.4802102363346382,
+        "note": "Calibration was not used to choose the classifier."
+      },
+      "train_seconds": 1.037495408000268,
+      "model_path": "artifacts/experiments/synthetic_smoke/baselines_mimic/models/xgboost.joblib",
+      "reload_max_abs_diff": 0.0
+    }
+  ],
+  "seconds": 9.92931786600002,
+  "note": "SYNTHETIC ENGINEERING VALIDATION. These numbers check that the pipeline runs. They are not clinical performance and they are not estimates for MIMIC-IV or CRDW patients.",
+  "created_at_utc": "2026-11-15T02:16:03Z",
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-6.12.113+-x86_64-with-glibc2.39",
+    "package_version": "0.1.0",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.1.1",
+      "scikit-learn": "1.9.1",
+      "xgboost": "3.4.1",
+      "torch": "2.15.0+cpu",
+      "pyarrow": "26.0.1",
+      "PyYAML": "6.0.1",
+      "joblib": "1.6.0"
+    }
+  }
+}

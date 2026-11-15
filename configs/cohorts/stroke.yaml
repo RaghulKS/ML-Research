@@ -1,0 +1,9 @@
+condition: stroke
+phenotype: historical
+version: stroke_historical_v1
+rules:
+  - {system: ICD10, pattern: "I63", match: prefix}
+  - {system: ICD9, pattern: "434", match: prefix}
+notes: >
+  Historical stroke definition. The expanded phenotype adds hemorrhagic and
+  unspecified stroke codes, including ICD-9 433*, and is not a silent replacement.
