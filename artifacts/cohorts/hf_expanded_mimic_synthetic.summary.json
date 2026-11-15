@@ -1,0 +1,11 @@
+{
+  "cohort_version": "heart_failure_expanded_v1",
+  "condition": "heart_failure",
+  "phenotype": "expanded",
+  "description": "Broader heart-failure research phenotype. Includes the historical I50/428 family plus selected hypertensive and rheumatic heart-failure codes. Not a replacement for historical counts.",
+  "n_patients": 156,
+  "n_encounters": 156,
+  "n_diagnosis_rows": 234,
+  "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+  "source": "mimic"
+}

@@ -1,0 +1,8 @@
+family: xgboost
+max_depth_grid: [2, 3]
+n_estimators: 80
+learning_rate: 0.08
+subsample: 0.9
+colsample_bytree: 0.9
+fallback: sklearn.GradientBoostingClassifier
+fallback_note: Used only when xgboost cannot be imported. The run is labeled gradient_boosting_fallback.

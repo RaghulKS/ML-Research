@@ -1,0 +1,27 @@
+task:
+  name: hf_30day_all_cause_readmission
+  implementation: readmission_v1
+  cohort: heart_failure
+  phenotype: historical
+  horizon_days: 30
+model: gru
+d_model: 48
+hidden_size: 48
+dropout: 0.2
+max_len: 32
+lr: 0.001
+epochs: 4
+finetune_epochs: 4
+batch_size: 32
+patience: 3
+n_layers: 1
+n_heads: 4
+mc_dropout_samples: 8
+freeze_modes: [full, head_only]
+compare_to_scratch: true
+split:
+  seed: 7
+notes: >
+  Source train, source held-out evaluation, frozen target evaluation,
+  full fine-tune, head-only fine-tune, and a target model trained from scratch.
+  Real MIMIC-IV to CRDW comparisons require compatible outcome ascertainment.

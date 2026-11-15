@@ -1,0 +1,11 @@
+{
+  "cohort_version": "heart_failure_historical_v1",
+  "condition": "heart_failure",
+  "phenotype": "historical",
+  "description": "Historical heart-failure list: ICD-10 prefix I50 and ICD-9 prefix 428. This is the definition behind the previously reported counts.",
+  "n_patients": 145,
+  "n_encounters": 145,
+  "n_diagnosis_rows": 217,
+  "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+  "source": "mimic"
+}

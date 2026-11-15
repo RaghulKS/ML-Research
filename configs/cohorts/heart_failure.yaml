@@ -1,0 +1,10 @@
+condition: heart_failure
+phenotype: historical
+version: heart_failure_historical_v1
+rules:
+  - {system: ICD10, pattern: "I50", match: prefix}
+  - {system: ICD9, pattern: "428", match: prefix}
+notes: >
+  Historical definition previously supplied for count reports.
+  Expanded phenotype heart_failure/expanded adds selected hypertensive and
+  rheumatic heart-failure codes and must not be substituted for these counts.

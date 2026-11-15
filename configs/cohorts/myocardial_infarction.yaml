@@ -1,0 +1,9 @@
+condition: myocardial_infarction
+phenotype: historical
+version: mi_historical_v1
+rules:
+  - {system: ICD10, pattern: "I21.9", match: exact}
+  - {system: ICD9, pattern: "410.9", match: prefix}
+notes: >
+  Historical myocardial-infarction definition. I21.9 is exact, so I21.90 and
+  I21.4 do not match. The expanded phenotype uses I21*, I22*, and 410*.

@@ -1,0 +1,424 @@
+{
+  "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+  "task": {
+    "task": "hf_30day_all_cause_readmission",
+    "implementation": "readmission_v1",
+    "cohort_version": "heart_failure_historical_v1",
+    "horizon_days": 30.0,
+    "n_cohort_patients": 145,
+    "n_labeled": 124,
+    "n_positive": 54,
+    "n_negative": 70,
+    "n_censored_insufficient_followup": 21,
+    "n_excluded_no_history": 0,
+    "positive_definition": "New encounter with start strictly after the index anchor and at most 30.0 days later. Any diagnosis counts. This is not a repeat of the cohort-defining code.",
+    "negative_definition": "No new encounter in the horizon, and observation continues through the horizon.",
+    "censor_definition": "Observation ends before the horizon without a qualifying encounter.",
+    "anchor_definition": "Anchor is the index encounter end: discharge time when an admission table provides it, otherwise the last in-encounter event time."
+  },
+  "split_info": {
+    "warning": null,
+    "seed": 7,
+    "test_size": 0.2,
+    "val_size": 0.2
+  },
+  "split_sizes": {
+    "train": 74,
+    "validation": 25,
+    "test": 25
+  },
+  "runs": [
+    {
+      "model": "gru",
+      "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+      "use_treatment": true,
+      "freeze_mode": "full",
+      "n_parameters": 16757,
+      "n_trainable": 16757,
+      "vocab_size": 39,
+      "unk_rate_test": 0.0,
+      "training": {
+        "best_epoch": 3,
+        "best_val_auprc": 0.5793188092101136,
+        "history": [
+          {
+            "epoch": 0,
+            "train_loss": 0.7907364980594532,
+            "val_auroc": 0.45454545454545453,
+            "val_auprc": 0.4316061656703368,
+            "val_brier": 0.2540920014887164
+          },
+          {
+            "epoch": 1,
+            "train_loss": 0.7935692088024037,
+            "val_auroc": 0.512987012987013,
+            "val_auprc": 0.45790257797122785,
+            "val_brier": 0.2518697719147719
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.7853640623994775,
+            "val_auroc": 0.5584415584415585,
+            "val_auprc": 0.51284367741587,
+            "val_brier": 0.24963164488335782
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.7835041316779884,
+            "val_auroc": 0.6038961038961039,
+            "val_auprc": 0.5793188092101136,
+            "val_brier": 0.24591548195964774
+          }
+        ],
+        "epochs_ran": 4
+      },
+      "train_seconds": 0.8502444549999382,
+      "test_metrics": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.474025974025974,
+        "auprc": 0.49954175081884056,
+        "brier": 0.24865308449422396,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 25,
+            "mean_predicted": 0.5022068583965301,
+            "fraction_positive": 0.44
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 0.4,
+        "recall": 0.5454545454545454,
+        "f1": 0.46153846153846156,
+        "sensitivity": 0.5454545454545454,
+        "specificity": 0.35714285714285715,
+        "confusion_matrix": [
+          [
+            5,
+            9
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      },
+      "calibration": {
+        "method": "isotonic_regression",
+        "fit": true,
+        "fit_split": "validation",
+        "brier_raw": 0.24865308449422396,
+        "brier_calibrated": 0.23920544217687073,
+        "auroc_calibrated": 0.564935064935065,
+        "auprc_calibrated": 0.4745670995670995,
+        "note": "Calibration was not used to choose the classifier."
+      },
+      "mc_dropout": {
+        "mean_predictive_std": 0.04448612034320831,
+        "brier_of_mean": 0.2523840394353072,
+        "auroc_of_mean": 0.38961038961038963,
+        "note": "MC dropout is not out-of-distribution detection."
+      },
+      "checkpoint": "artifacts/experiments/longitudinal_mimic_synthetic/gru_treatment/models/gru_treatment_full.pt",
+      "reload_max_abs_diff": 0.0,
+      "note": "SYNTHETIC ENGINEERING VALIDATION. These numbers check that the pipeline runs. They are not clinical performance and they are not estimates for MIMIC-IV or CRDW patients."
+    },
+    {
+      "model": "gru",
+      "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+      "use_treatment": false,
+      "freeze_mode": "full",
+      "n_parameters": 16517,
+      "n_trainable": 16517,
+      "vocab_size": 34,
+      "unk_rate_test": 0.0,
+      "training": {
+        "best_epoch": 3,
+        "best_val_auprc": 0.6438637073593448,
+        "history": [
+          {
+            "epoch": 0,
+            "train_loss": 0.8135799330634039,
+            "val_auroc": 0.5714285714285714,
+            "val_auprc": 0.552137031032698,
+            "val_brier": 0.24898268835870652
+          },
+          {
+            "epoch": 1,
+            "train_loss": 0.7806558399587065,
+            "val_auroc": 0.6038961038961038,
+            "val_auprc": 0.5858043026492225,
+            "val_brier": 0.24477238496030343
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.7641646878139393,
+            "val_auroc": 0.6363636363636364,
+            "val_auprc": 0.621233267623642,
+            "val_brier": 0.24175710988894802
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.7681776349608963,
+            "val_auroc": 0.6623376623376623,
+            "val_auprc": 0.6438637073593448,
+            "val_brier": 0.2407734968656801
+          }
+        ],
+        "epochs_ran": 4
+      },
+      "train_seconds": 0.10200836100011657,
+      "test_metrics": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.38311688311688313,
+        "auprc": 0.38631923915811384,
+        "brier": 0.25449608614445063,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 25,
+            "mean_predicted": 0.4800321018695831,
+            "fraction_positive": 0.44
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 0.4,
+        "recall": 0.36363636363636365,
+        "f1": 0.38095238095238093,
+        "sensitivity": 0.36363636363636365,
+        "specificity": 0.5714285714285714,
+        "confusion_matrix": [
+          [
+            8,
+            6
+          ],
+          [
+            7,
+            4
+          ]
+        ]
+      },
+      "calibration": {
+        "method": "isotonic_regression",
+        "fit": true,
+        "fit_split": "validation",
+        "brier_raw": 0.25449608614445063,
+        "brier_calibrated": 0.31,
+        "auroc_calibrated": 0.47077922077922074,
+        "auprc_calibrated": 0.4262200956937799,
+        "note": "Calibration was not used to choose the classifier."
+      },
+      "mc_dropout": {
+        "mean_predictive_std": 0.04362354800105095,
+        "brier_of_mean": 0.2623060933639226,
+        "auroc_of_mean": 0.2987012987012987,
+        "note": "MC dropout is not out-of-distribution detection."
+      },
+      "checkpoint": "artifacts/experiments/longitudinal_mimic_synthetic/gru_no_treatment/models/gru_no_treatment_full.pt",
+      "reload_max_abs_diff": 0.0,
+      "note": "SYNTHETIC ENGINEERING VALIDATION. These numbers check that the pipeline runs. They are not clinical performance and they are not estimates for MIMIC-IV or CRDW patients."
+    },
+    {
+      "model": "transformer",
+      "dataset_type": "SYNTHETIC ENGINEERING VALIDATION",
+      "use_treatment": true,
+      "freeze_mode": "full",
+      "n_parameters": 42101,
+      "n_trainable": 42101,
+      "vocab_size": 39,
+      "unk_rate_test": 0.0,
+      "training": {
+        "best_epoch": 1,
+        "best_val_auprc": 0.4207142187018348,
+        "history": [
+          {
+            "epoch": 0,
+            "train_loss": 0.8326831540545901,
+            "val_auroc": 0.4675324675324676,
+            "val_auprc": 0.4150554436650693,
+            "val_brier": 0.25210511788279427
+          },
+          {
+            "epoch": 1,
+            "train_loss": 0.8596159348616729,
+            "val_auroc": 0.487012987012987,
+            "val_auprc": 0.4207142187018348,
+            "val_brier": 0.2512323883637657
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.8312887742712691,
+            "val_auroc": 0.461038961038961,
+            "val_auprc": 0.4134582171276514,
+            "val_brier": 0.2545510467830812
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.7693656505765142,
+            "val_auroc": 0.461038961038961,
+            "val_auprc": 0.41400766767710195,
+            "val_brier": 0.2589009350160225
+          }
+        ],
+        "epochs_ran": 4
+      },
+      "train_seconds": 0.16532146500003364,
+      "test_metrics": {
+        "n": 25,
+        "n_positive": 11,
+        "auroc": 0.538961038961039,
+        "auprc": 0.5771710805534336,
+        "brier": 0.24943371492053945,
+        "calibration_bins": [
+          {
+            "bin_left": 0.0,
+            "bin_right": 0.2,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.2,
+            "bin_right": 0.4,
+            "n": 6,
+            "mean_predicted": 0.36240363617738086,
+            "fraction_positive": 0.3333333333333333
+          },
+          {
+            "bin_left": 0.4,
+            "bin_right": 0.6000000000000001,
+            "n": 19,
+            "mean_predicted": 0.4546929880192405,
+            "fraction_positive": 0.47368421052631576
+          },
+          {
+            "bin_left": 0.6000000000000001,
+            "bin_right": 0.8,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          },
+          {
+            "bin_left": 0.8,
+            "bin_right": 1.0,
+            "n": 0,
+            "mean_predicted": null,
+            "fraction_positive": null
+          }
+        ],
+        "threshold": 0.5,
+        "precision": 1.0,
+        "recall": 0.09090909090909091,
+        "f1": 0.16666666666666666,
+        "sensitivity": 0.09090909090909091,
+        "specificity": 1.0,
+        "confusion_matrix": [
+          [
+            14,
+            0
+          ],
+          [
+            10,
+            1
+          ]
+        ]
+      },
+      "calibration": {
+        "method": "isotonic_regression",
+        "fit": true,
+        "fit_split": "validation",
+        "brier_raw": 0.24943371492053945,
+        "brier_calibrated": 0.29810000000000003,
+        "auroc_calibrated": 0.48051948051948057,
+        "auprc_calibrated": 0.4306493506493506,
+        "note": "Calibration was not used to choose the classifier."
+      },
+      "mc_dropout": {
+        "mean_predictive_std": 0.07791324704885483,
+        "brier_of_mean": 0.25348129555264814,
+        "auroc_of_mean": 0.512987012987013,
+        "note": "MC dropout is not out-of-distribution detection."
+      },
+      "checkpoint": "artifacts/experiments/longitudinal_mimic_synthetic/transformer_treatment/models/transformer_treatment_full.pt",
+      "reload_max_abs_diff": 0.0,
+      "note": "SYNTHETIC ENGINEERING VALIDATION. These numbers check that the pipeline runs. They are not clinical performance and they are not estimates for MIMIC-IV or CRDW patients."
+    }
+  ],
+  "note": "SYNTHETIC ENGINEERING VALIDATION. These numbers check that the pipeline runs. They are not clinical performance and they are not estimates for MIMIC-IV or CRDW patients.",
+  "created_at_utc": "2026-11-15T02:17:10Z",
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-6.12.113+-x86_64-with-glibc2.39",
+    "package_version": "0.1.0",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.1.1",
+      "scikit-learn": "1.9.1",
+      "xgboost": "3.4.1",
+      "torch": "2.15.0+cpu",
+      "pyarrow": "26.0.1",
+      "PyYAML": "6.0.1",
+      "joblib": "1.6.0"
+    }
+  }
+}
