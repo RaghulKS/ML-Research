@@ -22,3 +22,9 @@ artifacts/experiments/**/models/
 **/*.pkl
 
 .DS_Store
+# MIMIC-derived files from the local data in context analysis stay local.
+/data in context/bq-results-20260726-043100-1785041031640.csv
+/data in context/project/data/cleaned_dataset.csv
+/data in context/project/figures/
+/data in context/project/tables/
+/data in context/project/report/
